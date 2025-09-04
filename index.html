@@ -1,128 +1,310 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FreshBins Windhoek</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; line-height: 1.6; }
-    header {
-      background: #2c7a2c;
-      color: white;
-      padding: 20px;
-      text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 15px;
-    }
-    header img { height: 60px; }
-    section { padding: 20px; }
-    .hero { background: #e6f4ea; text-align: center; padding: 50px 20px; }
-    .price { background: #f0f8ff; text-align: center; margin: 20px 0; padding: 20px; border-radius: 10px; }
-    ul { list-style: none; padding: 0; }
-    ul li::before { content: "✔️ "; }
-    .contact { background: #f9f9f9; padding: 20px; }
-    footer { background: #2c7a2c; color: white; text-align: center; padding: 10px; margin-top: 20px; }
-    .btn { background: #2c7a2c; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
-    .founders, .reviews { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; text-align: center; }
-    .founders img, .reviews img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreshBins Windhoek</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background: #2c7a2c;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        header img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .logo-title {
+            display: flex;
+            align-items: center;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Hamburger menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            height: 3px;
+            width: 25px;
+            background: white;
+            margin: 4px 0;
+            border-radius: 2px;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+                flex-direction: column;
+                background: #2c7a2c;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                width: 200px;
+                padding: 10px;
+            }
+            nav.active {
+                display: flex;
+            }
+            .menu-toggle {
+                display: flex;
+            }
+        }
+
+        /* Center Sections */
+        .center-section {
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .center-section h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #2c7a2c;
+        }
+
+        .center-section p {
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+            line-height: 1.6;
+        }
+
+        /* Founders section */
+        .founders {
+            padding: 60px 20px;
+            text-align: center;
+            background: #f4f4f4;
+        }
+
+        .founders h2 {
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: #2c7a2c;
+        }
+
+        .founders .image-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .founders .image-grid img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Reviews section */
+        .reviews {
+            padding: 50px 20px;
+            background: #f9f9f9;
+            text-align: center;
+        }
+
+        .reviews h2 {
+            font-size: 2em;
+            margin-bottom: 30px;
+        }
+
+        .review-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .review-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 280px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .review-card img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        .review-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .stars {
+            font-size: 1.2em;
+            color: gold;
+            margin-top: 10px;
+        }
+
+        /* Contact section */
+        .contact {
+            padding: 60px 20px;
+            background: #2c7a2c;
+            color: white;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .contact p {
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+
+        .contact a {
+            color: #ffd700;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        footer {
+            background: #1f5e1f;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+    </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <img src="images/Recycle001.svg" alt="FreshBins Logo">
-    <div>
-      <h1>FreshBins Windhoek</h1>
-      <p>Wheelie Bin Cleaning Service</p>
+<!-- Header -->
+<header>
+    <div class="logo-title">
+        <img src="Recycle001.svg" alt="FreshBins Logo">
+        <h1>FreshBins Windhoek</h1>
     </div>
-  </header>
+    <div class="menu-toggle" id="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <nav id="nav">
+        <a href="#services">Services</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <h2>Keep Your Bins Clean & Fresh</h2>
-    <p>Bi-weekly cleaning service that eliminates odors & germs.</p>
-    <button class="btn">Sign Up Today</button>
-  </section>
+<!-- Why Choose Us -->
+<section class="center-section" id="why">
+    <h2>Why Choose Us</h2>
+    <p>
+        At FreshBins Windhoek, we are committed to keeping your bins clean, fresh,
+        and free from harmful bacteria. Our eco-friendly cleaning methods ensure
+        your home stays hygienic and odor-free. With professional service and
+        reliable scheduling, we make cleanliness convenient and affordable.
+    </p>
+</section>
 
-  <!-- Pricing -->
-  <section class="price">
-    <h2>Just N$119.90 / month</h2>
-    <p>Includes 2 cleanings per month!</p>
-  </section>
+<!-- Founders -->
+<section class="founders" id="founders">
+    <h2>Founders</h2>
+    <div class="image-grid">
+        <img src="WhatsApp Image 2025-09-03 at 22.39.58_6f8bd1f7.jpg" alt="Founder 1">
+        <img src="WhatsApp Image 2025-09-03 at 22.17.47_b76ba053.jpg" alt="Founder 2">
+    </div>
+</section>
 
-  <!-- Areas -->
-  <section>
+<!-- Areas We Cover -->
+<section class="center-section" id="areas">
     <h2>Areas We Cover</h2>
-    <ul>
-      <li>Dorado Park</li>
-      <li>Hochland Park</li>
-      <li>Windhoek West</li>
-      <li>Windhoek North</li>
-      <li>Pioneers Park</li>
-      <li>Khomasdal</li>
-      <li>Katutura Central</li>
-    </ul>
-  </section>
+    <p>
+        We proudly serve the greater Windhoek area, including:<br>
+        • Dorado Park <br>
+        • Hochland Park <br>
+        • Windhoek West <br>
+        • And more surrounding neighborhoods!
+    </p>
+</section>
 
-  <!-- Why Choose Us -->
-  <section>
-    <h2>Why Choose Us?</h2>
-    <ul>
-      <li>Hygienic & eco-friendly cleaning</li>
-      <li>Eliminates odors & germs</li>
-      <li>Convenient and reliable</li>
-      <li>Locally owned in Windhoek</li>
-    </ul>
-  </section>
-
-  <!-- Founders -->
-  <section>
-    <h2>Meet Our Founders</h2>
-    <div class="founders">
-      <div>
-        <img src="images/founder1.jpg" alt="Founder 1">
-        <p>Founder 1</p>
-      </div>
-      <div>
-        <img src="images/founder2.jpg" alt="Founder 2">
-        <p>Founder 2</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Reviews -->
-  <section>
+<!-- Reviews Section -->
+<section class="reviews" id="reviews">
     <h2>What Our Customers Say</h2>
-    <div class="reviews">
-      <div>
-        <img src="images/review1.jpg" alt="Customer 1">
-        <p>"FreshBins is amazing! My bins have never smelled so fresh."</p>
-      </div>
-      <div>
-        <img src="images/review2.jpg" alt="Customer 2">
-        <p>"Reliable service, and always on time. Highly recommend!"</p>
-      </div>
-      <div>
-        <img src="images/review3.jpg" alt="Customer 3">
-        <p>"Affordable and hygienic. Best decision I've made."</p>
-      </div>
+    <div class="review-container">
+
+        <!-- Review 1 -->
+        <div class="review-card">
+            <img src="Cute Black Guy.jpg" alt="Customer 1">
+            <h3>John H.</h3>
+            <p>"FreshBins keeps my bins spotless! I love the eco-friendly cleaning."</p>
+            <div class="stars">★★★☆☆</div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="review-card">
+            <img src="ddb5820c-3090-4925-98ff-a3f8643fcf11.jpg" alt="Customer 2">
+            <h3>Tobias K.</h3>
+            <p>"Reliable service every month. No more bad odors around my home."</p>
+            <div class="stars">★★★★☆</div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="review-card">
+            <img src="Portrait 🤍 __ Cooperate headshot.jpg" alt="Customer 3">
+            <h3>Maria T.</h3>
+            <p>"Very professional and always on time. Highly recommended!"</p>
+            <div class="stars">★★★★★</div>
+        </div>
+
     </div>
-  </section>
+</section>
 
-  <!-- Contact -->
-  <section class="contact">
+<!-- Contact Section -->
+<section class="contact" id="contact">
     <h2>Contact Us</h2>
-    <p>📞 0818606789 / 0815829328</p>
-    <p>📧 freshbinswhk@gmail.com</p>
-  </section>
+    <p>📞 Call us: <a href="tel:0815829328">081 582 9328</a> | <a href="tel:0818606789">081 860 6789</a></p>
+    <p>📧 Email: <a href="mailto:freshbinswhk@gmail.com">freshbinswhk@gmail.com</a></p>
+    <p>We’d love to hear from you! Reach out for bookings, questions, or collaborations.</p>
+</section>
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 FreshBins Windhoek - Cleaner, Fresher Bins!</p>
-  </footer>
+<!-- Footer -->
+<footer>
+    <p>&copy; 2025 FreshBins Windhoek. All rights reserved.</p>
+</footer>
+
+<script>
+    // Hamburger toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const nav = document.getElementById('nav');
+
+    menuToggle.addEventListener('click', () => {
+        nav.classList.toggle('active');
+    });
+</script>
 
 </body>
 </html>
